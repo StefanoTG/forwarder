@@ -34,7 +34,7 @@ iptables -t nat -A POSTROUTING -j MASQUERADE
 PUBLIC_IP=$(curl -fs --max-time 5 https://api.ipify.org || curl -fs --max-time 5 https://icanhazip.com)
 [ -n "$PUBLIC_IP" ] || { echo "Could not determine public IP" >&2; exit 1; }
 
-# 4. Whisper your IP to Telegram 😘
+
 TEXT="✔️ Forwarder deployed on $(hostname) – public IP: $PUBLIC_IP"
 curl -s -X POST \
      "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
